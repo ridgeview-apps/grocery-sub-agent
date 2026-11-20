@@ -1,0 +1,51 @@
+product_id,name,category,brand,price_gbp,pack_size,allergens,is_vegetarian,is_vegan,storage
+P001,Vegetarian Sausages 6 pack,sausages,Grocer Own,2.75,300g,gluten|soya,TRUE,TRUE,chilled
+P002,Vegetarian Lincolnshire Sausages,sausages,Greenfield,3.25,300g,gluten|soya,TRUE,TRUE,chilled
+P003,Mushroom & Walnut Sausages,sausages,Grocer Own,3.00,300g,gluten|tree_nuts,TRUE,TRUE,chilled
+P004,Lincolnshire-style Veggie Sausages,sausages,Hearth & Field,3.50,276g,gluten|egg,TRUE,FALSE,chilled
+P005,Plant-based Cumberland Sausages,sausages,Plantwise,3.75,300g,soya,TRUE,TRUE,chilled
+P006,Pork Sausages 6 pack,sausages,Grocer Own,2.50,400g,gluten|sulphites,FALSE,FALSE,chilled
+P007,Outdoor Bred Pork Chipolatas,sausages,Grocer Essentials,2.20,340g,gluten|sulphites,FALSE,FALSE,chilled
+P008,Chicken Sausages,sausages,Grocer Own,3.10,360g,gluten,FALSE,FALSE,chilled
+P009,Frozen Vegetarian Sausages,sausages,Fernleaf,3.00,336g,egg|gluten,TRUE,FALSE,frozen
+P010,Semi-skimmed Milk 2 pint,milk,Grocer Essentials,1.45,1.136L,milk,TRUE,FALSE,chilled
+P011,Whole Milk 2 pint,milk,Grocer Essentials,1.45,1.136L,milk,TRUE,FALSE,chilled
+P012,Organic Semi-skimmed Milk 2 pint,milk,Grocer Own,1.90,1.136L,milk,TRUE,FALSE,chilled
+P013,Oat Drink Barista,milk,Oat Valley,2.10,1L,gluten,TRUE,TRUE,ambient
+P014,Unsweetened Almond Drink,milk,Meadowbloom,2.00,1L,tree_nuts,TRUE,TRUE,ambient
+P015,Soya Drink,milk,Meadowbloom,1.85,1L,soya,TRUE,TRUE,ambient
+P016,Lactose Free Semi-skimmed Milk,milk,Dale Farmhouse,1.95,1L,milk,TRUE,FALSE,chilled
+P017,White Sliced Bread 800g,bread,Grocer Essentials,1.10,800g,gluten|soya,TRUE,TRUE,ambient
+P018,Wholemeal Sliced Bread 800g,bread,Grocer Own,1.40,800g,gluten|soya,TRUE,TRUE,ambient
+P019,Seeded Batch Loaf,bread,Grocer Own,1.85,800g,gluten|sesame|soya,TRUE,TRUE,ambient
+P020,Gluten Free White Bread,bread,Free & Easy,3.20,535g,egg,TRUE,FALSE,ambient
+P021,Sourdough Bloomer,bread,Grocer Own,2.50,600g,gluten,TRUE,TRUE,ambient
+P022,Greek Style Natural Yoghurt,yoghurt,Grocer Own,1.60,500g,milk,TRUE,FALSE,chilled
+P023,Total 0% Greek Yoghurt,yoghurt,Olympus Dairy,3.00,500g,milk,TRUE,FALSE,chilled
+P024,Coconut Yoghurt Alternative,yoghurt,Coco Grove,2.75,350g,,TRUE,TRUE,chilled
+P025,Soya Plain Alternative to Yoghurt,yoghurt,Meadowbloom,1.85,500g,soya,TRUE,TRUE,chilled
+P026,Classic Green Pesto,pesto,Grocer Own,1.80,190g,milk|tree_nuts,TRUE,FALSE,ambient
+P027,Red Pesto,pesto,Bella Tavola,2.60,190g,milk|tree_nuts,TRUE,FALSE,ambient
+P028,Free From Green Pesto,pesto,Bella Tavola,2.90,190g,,TRUE,TRUE,ambient
+P029,Tomato & Basil Pasta Sauce,pasta_sauce,Grocer Own,1.20,500g,,TRUE,TRUE,ambient
+P030,Arrabbiata Pasta Sauce,pasta_sauce,Nonna's Kitchen,2.20,500g,,TRUE,TRUE,ambient
+P031,Tomato & Mascarpone Sauce,pasta_sauce,Grocer Own,1.90,350g,milk,TRUE,FALSE,chilled
+P032,Smooth Peanut Butter,spread,Grocer Own,1.75,340g,peanuts,TRUE,TRUE,ambient
+P033,Crunchy Peanut Butter,spread,Nutshed,3.25,300g,peanuts,TRUE,TRUE,ambient
+P034,Sunflower Seed Butter,spread,Grocer Own,2.80,250g,,TRUE,TRUE,ambient
+P035,Hummus Classic,dip,Grocer Own,1.25,200g,sesame,TRUE,TRUE,chilled
+P036,Reduced Fat Hummus,dip,Grocer Essentials,1.00,200g,sesame,TRUE,TRUE,chilled
+P037,Beetroot Dip,dip,Grocer Own,1.50,170g,milk,TRUE,FALSE,chilled
+P038,Mature Cheddar 400g,cheese,Grocer Own,3.60,400g,milk,TRUE,FALSE,chilled
+P039,Extra Mature Cheddar 400g,cheese,Westcountry Creamery,4.75,350g,milk,TRUE,FALSE,chilled
+P040,Vegan Cheddar Style Block,cheese,Verdant,3.00,200g,,TRUE,TRUE,chilled
+P041,Parmigiano Reggiano,cheese,Grocer Own,3.50,200g,milk,FALSE,FALSE,chilled
+P042,Italian Hard Cheese (vegetarian),cheese,Grocer Own,2.90,200g,milk,TRUE,FALSE,chilled
+P043,Vegetable Lasagne,ready_meal,Grocer Own,3.75,400g,gluten|milk|egg,TRUE,FALSE,chilled
+P044,Beef Lasagne,ready_meal,Grocer Own,3.75,400g,gluten|milk|egg|celery,FALSE,FALSE,chilled
+P045,Frozen Garden Peas,frozen_veg,Grocer Essentials,1.30,1kg,,TRUE,TRUE,frozen
+P046,Frozen Petits Pois,frozen_veg,Northsea Frozen,2.25,750g,,TRUE,TRUE,frozen
+P047,Chickpeas in Water,tinned,Grocer Essentials,0.65,400g,,TRUE,TRUE,ambient
+P048,Red Kidney Beans,tinned,Grocer Essentials,0.60,400g,,TRUE,TRUE,ambient
+P049,Scottish Salmon Fillets x2,fish,Grocer Own,4.50,240g,fish,FALSE,FALSE,chilled
+P050,Smoked Salmon,fish,Grocer Own,3.75,100g,fish,FALSE,FALSE,chilled

@@ -1,0 +1,9 @@
+customer_id,name,allergens,diet,price_tolerance_pct
+C001,"Test Customer 01 (vegetarian, nut allergy)",tree_nuts|peanuts,vegetarian,15
+C002,Test Customer 02 (no restrictions),,none,20
+C003,"Test Customer 03 (vegan, milk allergy)",milk,vegan,10
+C004,Test Customer 04 (gluten allergy),gluten,none,25
+C005,"Test Customer 05 (vegetarian, sesame allergy)",sesame,vegetarian,10
+C006,"Test Customer 06 (no restrictions, price-sensitive)",,none,5
+C007,"Test Customer 07 (vegetarian, egg and soya allergy)",egg|soya,vegetarian,20
+C008,Test Customer 08 (fish allergy),fish,none,15
