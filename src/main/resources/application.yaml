@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: grocery-sub-agent
+  ai:
+    mcp:
+      server:
+        name: grocery-sub-agent
+        version: 0.0.1
+        protocol: STREAMABLE
