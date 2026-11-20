@@ -1,0 +1,13 @@
+# Activated with SPRING_PROFILES_ACTIVE=snowflake. Tests and CI don't use it (they run on H2).
+# Connects as the read-only service user GROCERY_SUB_AGENT using key-pair auth.
+spring:
+  datasource:
+    url: jdbc:snowflake://${SNOWFLAKE_ACCOUNT:kvpwgpu-mt61935}.snowflakecomputing.com/?db=GROCER&schema=PUBLIC&warehouse=COMPUTE_WH&role=GROCER_READER
+    username: ${SNOWFLAKE_USER:GROCERY_SUB_AGENT}
+    driver-class-name: net.snowflake.client.jdbc.SnowflakeDriver
+    hikari:
+      maximum-pool-size: 2
+      data-source-properties:
+        private_key_file: ${SNOWFLAKE_PRIVATE_KEY_FILE}
+        # JSON instead of Arrow results: Arrow needs --add-opens on Java 16+; results here are small.
+        JDBC_QUERY_RESULT_FORMAT: JSON
