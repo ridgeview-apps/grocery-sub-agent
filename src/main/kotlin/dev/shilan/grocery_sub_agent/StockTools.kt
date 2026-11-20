@@ -56,10 +56,7 @@ class StockTools(private val jdbc: JdbcClient) {
                     name = rs.getString("NAME"),
                     brand = rs.getString("BRAND"),
                     priceGbp = rs.getBigDecimal("PRICE_GBP"),
-                    allergens = rs.getString("ALLERGENS")
-                        ?.split('|')
-                        ?.filter { it.isNotBlank() }
-                        .orEmpty(),
+                    allergens = parseAllergens(rs.getString("ALLERGENS")),
                     isVegetarian = rs.getBoolean("IS_VEGETARIAN"),
                     isVegan = rs.getBoolean("IS_VEGAN"),
                     storage = rs.getString("STORAGE"),
