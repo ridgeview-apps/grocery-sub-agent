@@ -2,6 +2,7 @@ package dev.shilan.grocery_sub_agent
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.context.annotation.Import
 import java.time.LocalDate
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -9,6 +10,7 @@ import kotlin.test.assertNull
 
 // Runs against H2, seeded from src/test/resources/schema.sql and data.sql.
 @SpringBootTest
+@Import(FakeChatModelConfig::class)
 class SubstitutionHistoryToolsTest(@Autowired private val tools: SubstitutionHistoryTools) {
 
     @Test

@@ -53,6 +53,17 @@ kotlin {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	testLogging {
+		events("failed", "skipped")
+		exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+	}
+	// Gradle prints nothing on success; one summary line makes the count visible locally and in CI logs.
+	afterSuite(KotlinClosure2<TestDescriptor, TestResult, Unit>({ suite, result ->
+		if (suite.parent == null) {
+			println("Tests: ${result.testCount} run, ${result.successfulTestCount} passed, " +
+					"${result.failedTestCount} failed, ${result.skippedTestCount} skipped")
+		}
+	}))
 }
 
 tasks.test {

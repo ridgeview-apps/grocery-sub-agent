@@ -15,3 +15,5 @@ spring:
         location: ${GOOGLE_CLOUD_LOCATION:europe-west2}
         chat:
           model: gemini-2.5-flash
+          # Ranking should be repeatable for the same candidates, which also makes live evals less flaky.
+          temperature: 0.0
