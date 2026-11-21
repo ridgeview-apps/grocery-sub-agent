@@ -3,12 +3,6 @@ package dev.shilan.grocery_sub_agent.agent
 import dev.shilan.grocery_sub_agent.guardrails.RejectionReason.BREAKS_DIET
 import dev.shilan.grocery_sub_agent.guardrails.RejectionReason.CONTAINS_ALLERGEN
 import dev.shilan.grocery_sub_agent.guardrails.RejectionReason.OUTSIDE_PRICE_BAND
-import dev.shilan.grocery_sub_agent.tools.OrderTools
-import dev.shilan.grocery_sub_agent.tools.StockTools
-import dev.shilan.grocery_sub_agent.tools.SubstitutionHistoryTools
-import org.springframework.jdbc.core.simple.JdbcClient
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -18,27 +12,12 @@ import kotlin.test.assertTrue
 // Real tools on a fresh H2 database per test, without a Spring context, so the ranker can be a plain fake.
 class SubstitutionAgentTest {
 
-    private val db = EmbeddedDatabaseBuilder()
-        .generateUniqueName(true)
-        .setType(EmbeddedDatabaseType.H2)
-        .addScripts("schema.sql", "data.sql")
-        .build()
-    private val jdbc = JdbcClient.create(db)
+    private val db = TestDatabase()
 
     @AfterTest
-    fun shutDown() = db.shutdown()
+    fun shutDown() = db.close()
 
-    private fun agent(ranker: SubstituteRanker) =
-        SubstitutionAgent(OrderTools(jdbc), StockTools(jdbc), SubstitutionHistoryTools(jdbc), ranker)
-
-    private class RecordingRanker(private val answer: (RankRequest) -> Ranking) : SubstituteRanker {
-        val requests = mutableListOf<RankRequest>()
-
-        override fun rank(request: RankRequest): Ranking {
-            requests += request
-            return answer(request)
-        }
-    }
+    private fun agent(ranker: SubstituteRanker) = db.agent(ranker)
 
     @Test
     fun `O0025 escalates P001 with every rejection reason and proposes the only allowed milk`() {
