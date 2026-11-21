@@ -1,5 +1,7 @@
-package dev.shilan.grocery_sub_agent
+package dev.shilan.grocery_sub_agent.agent
 
+import dev.shilan.grocery_sub_agent.domain.OrderLine
+import dev.shilan.grocery_sub_agent.domain.StockedProduct
 import org.springframework.ai.chat.client.ChatClient
 import tools.jackson.databind.json.JsonMapper
 import java.math.BigDecimal

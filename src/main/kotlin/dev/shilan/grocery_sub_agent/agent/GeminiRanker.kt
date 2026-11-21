@@ -1,4 +1,4 @@
-package dev.shilan.grocery_sub_agent
+package dev.shilan.grocery_sub_agent.agent
 
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.stereotype.Component

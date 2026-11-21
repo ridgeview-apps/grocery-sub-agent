@@ -1,8 +1,11 @@
-package dev.shilan.grocery_sub_agent
+package dev.shilan.grocery_sub_agent.guardrails
 
-import dev.shilan.grocery_sub_agent.RejectionReason.BREAKS_DIET
-import dev.shilan.grocery_sub_agent.RejectionReason.CONTAINS_ALLERGEN
-import dev.shilan.grocery_sub_agent.RejectionReason.OUTSIDE_PRICE_BAND
+import dev.shilan.grocery_sub_agent.domain.CustomerConstraints
+import dev.shilan.grocery_sub_agent.domain.Diet
+import dev.shilan.grocery_sub_agent.domain.StockedProduct
+import dev.shilan.grocery_sub_agent.guardrails.RejectionReason.BREAKS_DIET
+import dev.shilan.grocery_sub_agent.guardrails.RejectionReason.CONTAINS_ALLERGEN
+import dev.shilan.grocery_sub_agent.guardrails.RejectionReason.OUTSIDE_PRICE_BAND
 import java.math.BigDecimal
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,4 +1,4 @@
-package dev.shilan.grocery_sub_agent
+package dev.shilan.grocery_sub_agent.tools
 
 /**
  * Parses a pipe-separated allergen column. NULL and empty both mean "none listed",

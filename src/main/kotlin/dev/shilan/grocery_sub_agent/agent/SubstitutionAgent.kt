@@ -1,5 +1,16 @@
-package dev.shilan.grocery_sub_agent
+package dev.shilan.grocery_sub_agent.agent
 
+import dev.shilan.grocery_sub_agent.domain.OrderDetails
+import dev.shilan.grocery_sub_agent.domain.OrderLine
+import dev.shilan.grocery_sub_agent.domain.Outcome
+import dev.shilan.grocery_sub_agent.domain.StockedProduct
+import dev.shilan.grocery_sub_agent.domain.SubstitutionRecord
+import dev.shilan.grocery_sub_agent.guardrails.RejectionReason
+import dev.shilan.grocery_sub_agent.guardrails.SubstitutionFilter
+import dev.shilan.grocery_sub_agent.guardrails.Verdict
+import dev.shilan.grocery_sub_agent.tools.OrderTools
+import dev.shilan.grocery_sub_agent.tools.StockTools
+import dev.shilan.grocery_sub_agent.tools.SubstitutionHistoryTools
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 

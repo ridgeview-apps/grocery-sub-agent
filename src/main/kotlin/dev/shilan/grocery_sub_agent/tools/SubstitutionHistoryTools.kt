@@ -1,26 +1,11 @@
-package dev.shilan.grocery_sub_agent
+package dev.shilan.grocery_sub_agent.tools
 
+import dev.shilan.grocery_sub_agent.domain.Outcome
+import dev.shilan.grocery_sub_agent.domain.SubstitutionRecord
 import org.springframework.ai.mcp.annotation.McpTool
 import org.springframework.ai.mcp.annotation.McpToolParam
 import org.springframework.jdbc.core.simple.JdbcClient
 import org.springframework.stereotype.Component
-import java.time.LocalDate
-
-enum class Outcome { ACCEPTED, REJECTED }
-
-/** One past substitution for a customer, and whether they accepted it. */
-data class SubstitutionRecord(
-    val substitutionId: String,
-    val originalProductId: String,
-    // Names are null if the product is missing from PRODUCTS; the record is still returned.
-    val originalName: String?,
-    val substituteProductId: String,
-    val substituteName: String?,
-    val outcome: Outcome,
-    // Null for accepted substitutions.
-    val rejectionReason: String?,
-    val substitutedOn: LocalDate,
-)
 
 @Component
 class SubstitutionHistoryTools(private val jdbc: JdbcClient) {

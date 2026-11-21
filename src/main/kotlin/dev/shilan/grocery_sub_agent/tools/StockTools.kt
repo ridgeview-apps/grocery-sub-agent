@@ -1,23 +1,10 @@
-package dev.shilan.grocery_sub_agent
+package dev.shilan.grocery_sub_agent.tools
 
+import dev.shilan.grocery_sub_agent.domain.StockedProduct
 import org.springframework.ai.mcp.annotation.McpTool
 import org.springframework.ai.mcp.annotation.McpToolParam
 import org.springframework.jdbc.core.simple.JdbcClient
 import org.springframework.stereotype.Component
-import java.math.BigDecimal
-
-/** One product that is in stock at one store: a substitution candidate. */
-data class StockedProduct(
-    val productId: String,
-    val name: String,
-    val brand: String,
-    val priceGbp: BigDecimal,
-    val allergens: List<String>,
-    val isVegetarian: Boolean,
-    val isVegan: Boolean,
-    val storage: String,
-    val quantity: Int,
-)
 
 @Component
 class StockTools(private val jdbc: JdbcClient) {
