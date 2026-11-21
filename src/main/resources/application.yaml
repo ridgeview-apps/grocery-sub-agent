@@ -12,9 +12,7 @@ spring:
       genai:
         # project-id + location (and no api-key) puts the client in Vertex AI mode, authenticated by ADC.
         project-id: ${GOOGLE_CLOUD_PROJECT:grocery-sub-agent}
-        # Global endpoint: gemini-3.5-flash isn't confirmed in europe-west2; see README on data residency.
+        # Global endpoint for now; an eu multi-region is listed for gemini-3.5-flash but untried. See README on data residency.
         location: ${GOOGLE_CLOUD_LOCATION:global}
         chat:
           model: gemini-3.5-flash
-          # Ranking should be repeatable for the same candidates, which also makes live evals less flaky.
-          temperature: 0.0
