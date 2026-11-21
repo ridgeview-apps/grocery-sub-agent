@@ -7,3 +7,11 @@ spring:
         name: grocery-sub-agent
         version: 0.0.1
         protocol: STREAMABLE
+
+    google:
+      genai:
+        # project-id + location (and no api-key) puts the client in Vertex AI mode, authenticated by ADC.
+        project-id: ${GOOGLE_CLOUD_PROJECT:grocery-sub-agent}
+        location: ${GOOGLE_CLOUD_LOCATION:europe-west2}
+        chat:
+          model: gemini-2.5-flash

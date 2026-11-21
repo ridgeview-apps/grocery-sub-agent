@@ -28,6 +28,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.ai:spring-ai-starter-mcp-server-webmvc")
 	implementation("tools.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.ai:spring-ai-starter-model-google-genai")
 	runtimeOnly("net.snowflake:snowflake-jdbc:4.4.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-jdbc-test")
@@ -52,4 +53,10 @@ kotlin {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.test {
+	// The Google GenAI client resolves ADC at startup and CI has no GCP credentials, so the
+	// real chat model is off for unit tests; tests that need a model supply a fake ChatModel.
+	systemProperty("spring.ai.model.chat", "none")
 }
