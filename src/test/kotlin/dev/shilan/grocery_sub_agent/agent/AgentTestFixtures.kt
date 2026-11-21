@@ -22,6 +22,8 @@ class TestDatabase : AutoCloseable {
 
     fun agent(ranker: SubstituteRanker) = SubstitutionAgent(orderTools, stockTools, historyTools, ranker)
 
+    fun pickerDecisions() = PickerDecisions(orderTools, stockTools, historyTools)
+
     override fun close() = db.shutdown()
 }
 

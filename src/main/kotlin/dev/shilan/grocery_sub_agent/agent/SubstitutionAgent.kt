@@ -1,13 +1,12 @@
 package dev.shilan.grocery_sub_agent.agent
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import dev.shilan.grocery_sub_agent.domain.OrderDetails
 import dev.shilan.grocery_sub_agent.domain.OrderLine
 import dev.shilan.grocery_sub_agent.domain.Outcome
 import dev.shilan.grocery_sub_agent.domain.StockedProduct
 import dev.shilan.grocery_sub_agent.domain.SubstitutionRecord
 import dev.shilan.grocery_sub_agent.guardrails.RejectionReason
-import dev.shilan.grocery_sub_agent.guardrails.SubstitutionFilter
-import dev.shilan.grocery_sub_agent.guardrails.Verdict
 import dev.shilan.grocery_sub_agent.tools.OrderTools
 import dev.shilan.grocery_sub_agent.tools.StockTools
 import dev.shilan.grocery_sub_agent.tools.SubstitutionHistoryTools
@@ -39,6 +38,8 @@ data class RejectedCandidate(
     val previouslyRejected: Boolean,
 )
 
+// The JSON names the variant ("Proposed" / "Escalated"), so a client can tell them apart without guessing from fields.
+@JsonTypeInfo(use = JsonTypeInfo.Id.SIMPLE_NAME, property = "decision")
 sealed interface LineDecision {
     val line: OrderLine
 
@@ -88,22 +89,7 @@ class SubstitutionAgent(
     }
 
     private fun decide(order: OrderDetails, line: OrderLine, history: List<SubstitutionRecord>): LineDecision {
-        val candidates = stockTools.findInStockProducts(order.storeId, line.category)
-        val verdicts = SubstitutionFilter.evaluate(order.constraints, line.priceGbp, candidates)
-        // Only rejections of this same swap count; a substitute refused for a different original may still suit.
-        val previouslyRejectedIds = history
-            .filter { it.originalProductId == line.productId && it.outcome == Outcome.REJECTED }
-            .map { it.substituteProductId }
-            .toSet()
-
-        val rejected = verdicts.mapNotNull { (product, verdict) ->
-            val filterReasons = (verdict as? Verdict.Rejected)?.reasons.orEmpty()
-            val previouslyRejected = product.productId in previouslyRejectedIds
-            if (filterReasons.isEmpty() && !previouslyRejected) null
-            else RejectedCandidate(product, filterReasons, previouslyRejected)
-        }
-        val rejectedIds = rejected.map { it.product.productId }.toSet()
-        val allowed = candidates.filter { it.productId !in rejectedIds }
+        val (allowed, rejected) = assessCandidates(stockTools, order, line, history)
         if (allowed.isEmpty()) {
             return LineDecision.Escalated(line, EscalationCause.NO_ALLOWED_CANDIDATE, rejected)
         }
